@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  upload-to-search:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      Handler: sample.handler
+      Runtime: python3.12
+      Code:
+        ZipFile: s3://pgpcc-harsoftng-artifacts/upload-to-search-build-artifacts.zip
+      Description: ''
+      MemorySize: 512
+      Timeout: 900
+      Role: 'arn:aws:iam::044433051908:role/lambda-opensearch-sr'
+      Layers:
+        - 'arn:aws:lambda:us-east-1:044433051908:layer:aws-auth-layer:1'
